@@ -1,0 +1,24 @@
+{
+  "name": "ogidispearl-project-limited",
+  "version": "1.0.0",
+  "main": "index.js",
+
+  "scripts": {
+    "install-server": "yarn add --prefix server",
+    "install-client": "yarn add --prefix client",
+    "install": "yarn add -server && yarn add-client",
+    "server": "yarn add server --prefix server",
+    "client": "yarn add --prefix  client",
+    "watch":"yarn add server & yarn add client",
+    "deploy": "yarn add deploy --prefix client && yarn start --prefix server",
+    "deploy-cluster": "npm run build --prefix client && npm run cluster --prefix server",
+    "test": "yarn test --prefix server && yarn  test --prefix client"
+  },
+  "repository": "https://github.com/samueleffiongjacob/Ogidispearl-Project-Limited.git",
+  "author": "samueleffiongjacob <samueleffiong685@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "react-icons": "^4.4.0"
+  }
+}
