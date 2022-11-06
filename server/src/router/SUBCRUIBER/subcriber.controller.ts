@@ -24,6 +24,8 @@ const OneEmailSub = (req: Request, res: Response, next: NextFunction) => {
     const emailSubcriber= req.params.emailId;
 
     return emailsubcriber.findById(emailSubcriber)
+        .populate('newForm')
+        .select('__v')
         .then((newMail) => (newMail ? res.status(200).json({ newMail }) : res.status(404).json({ message: 'not found' })))
         .catch((error) => res.status(500).json({ error }));
 };
@@ -31,6 +33,8 @@ const OneEmailSub = (req: Request, res: Response, next: NextFunction) => {
 // QURY ALL SUBCRIBER
 const SeeAllEmailLSub = (req: Request, res: Response, next: NextFunction) => {
     return emailsubcriber.find()
+        .populate('author')
+        .select('__v')
         .then((newMail) => res.status(200).json({ newMail }))
         .catch((error) => res.status(500).json({ error }));
 };

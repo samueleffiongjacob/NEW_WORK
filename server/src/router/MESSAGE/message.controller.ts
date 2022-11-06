@@ -26,6 +26,8 @@ const SeeOneForm = (req: Request, res: Response, next: NextFunction) => {
     const newFormId = req.params.formId;
 
     return MESSAGE.findById( newFormId )
+        .populate('newForm')
+        .select('__v')
         .then((newForm) => (newForm ? res.status(200).json({ newForm }) : res.status(404).json({ message: 'not found' })))
         .catch((error) => res.status(500).json({ error }));
 };
@@ -33,6 +35,8 @@ const SeeOneForm = (req: Request, res: Response, next: NextFunction) => {
 // FINE ALL FORM
 const SeeAllForm = (req: Request, res: Response, next: NextFunction) => {
     return MESSAGE.find()
+        .populate('newForm')
+        .select('__v')
         .then((newForm) => res.status(200).json({ newForm }))
         .catch((error) => res.status(500).json({ error }));
 };
