@@ -1,4 +1,4 @@
-// IMPORTING SYSTEM DEPENDENCIES AND THIRD PARTY MIDDLEWARES
+// IMPORTING SYSTEM DEPENDENCIES , THIRD PARTY MIDDLEWARES AND ROUTEs
 import path from "path";
 import http from 'http';
 import dotenv from "dotenv";

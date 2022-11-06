@@ -21,25 +21,25 @@ export const ValidateJoi  = (schema: ObjectSchema) => {
 export const Schemas = {
     contact: {
         create: Joi.object<IContact>({
-            name: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
-            email: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+            name: Joi.string().required(),
+            email: Joi.string().required(),
             message:Joi.string().required()
         }),
 
         update : Joi.object<IContact>({
-            name: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
-            email: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+            name: Joi.string().required(),
+            email: Joi.string().required(),
             message: Joi.string().required()
         }),
     },
 
     emailsubcriber : {
         create: Joi.object<Iemailsubcriber>({
-            email: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+            email: Joi.string().required(),
         }),
 
         update : Joi.object<Iemailsubcriber>({
-            email: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+            email: Joi.string().required(),
         }),
     }
 }

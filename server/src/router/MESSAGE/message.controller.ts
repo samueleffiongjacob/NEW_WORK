@@ -5,12 +5,12 @@ import { NextFunction, Request, Response } from 'express';
 
 
 const createContactForm = (req: Request, res: Response, next: NextFunction) => {
-    const { name , email, message} = req.body;
+    const { name="fullname" , type="email", message} = req.body;
 
     const newForm = new MESSAGE({
         _id: new mongoose.Types.ObjectId(),
         name,
-        email,
+        type,
         message
     });
 
