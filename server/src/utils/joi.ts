@@ -1,3 +1,4 @@
+// IMORTING DEPENDENCYS
 import Joi, { ObjectSchema } from 'joi';
 import { NextFunction, Request, Response } from 'express';
 import { IContact } from '../models/message.mongo';
@@ -5,6 +6,7 @@ import  { Iemailsubcriber } from '../models/emailsubcriber.mongo';
 import Logging from './logging';
 
 
+//VALIDATING SCHEMAS FROM MODELS
 export const ValidateJoi  = (schema: ObjectSchema) => {
     return async (req: Request, res: Response, next: NextFunction ) => {
         try {
@@ -18,6 +20,7 @@ export const ValidateJoi  = (schema: ObjectSchema) => {
     };
 };
 
+// VALIDATING EACH FIELS
 export const Schemas = {
     contact: {
         create: Joi.object<IContact>({

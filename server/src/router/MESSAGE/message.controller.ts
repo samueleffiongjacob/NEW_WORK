@@ -1,9 +1,10 @@
+//IPORTING DEPENDENCY
 import MESSAGE from "../../models/message.mongo";
 import mongoose from 'mongoose';
 import { NextFunction, Request, Response } from 'express';
 
 
-
+// CREATING FORM
 const createContactForm = (req: Request, res: Response, next: NextFunction) => {
     const { name="fullname" , type="email", message} = req.body;
 
@@ -20,7 +21,7 @@ const createContactForm = (req: Request, res: Response, next: NextFunction) => {
         .catch((error) => res.status(500).json({ error }));
 };
 
-// qury one emailsubcriber
+// FINE ONE FORM
 const SeeOneForm = (req: Request, res: Response, next: NextFunction) => {
     const newFormId = req.params.formId;
 
@@ -29,12 +30,14 @@ const SeeOneForm = (req: Request, res: Response, next: NextFunction) => {
         .catch((error) => res.status(500).json({ error }));
 };
 
+// FINE ALL FORM
 const SeeAllForm = (req: Request, res: Response, next: NextFunction) => {
     return MESSAGE.find()
         .then((newForm) => res.status(200).json({ newForm }))
         .catch((error) => res.status(500).json({ error }));
 };
 
+//UPDATE ALL FORM
 const updateOneForm = (req: Request, res: Response, next: NextFunction) => {
     const newFormId = req.params.formId;
 

@@ -1,3 +1,5 @@
+//IMPORTING DEPENDENY
+
 import express from "express"
 
 import Contactcontrollers from "./message.controller"
@@ -10,7 +12,7 @@ MessageRouter.use((req, res, next) => {
   next();
 });
 
-// endpoint to follow
+
 // endpoint to follow
 MessageRouter.get("/", Contactcontrollers.SeeAllForm);
 MessageRouter.get("/:formId", Contactcontrollers.SeeOneForm);

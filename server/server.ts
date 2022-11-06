@@ -1,4 +1,4 @@
-//IMPORT SOURCE FILES
+//IMPORT SOURCE FILES and DEPENDENCY
 import mongoose from 'mongoose';
 import servertapp from "./src/app";
 import dotenv from "dotenv";
@@ -9,7 +9,7 @@ import Logging from './src/utils/logging'
 import { config } from './src/config/config';
 
 
-/** Connect to Mongo */
+/** Connect to Mongo  and STARTING SERVER*/
 mongoose
     .connect(config.mongo.url, { retryWrites: true, w: 'majority' })
     .then(() => {

@@ -1,9 +1,10 @@
+IMPORTING DEPENDCY
 import emailsubcriber from "../../models/emailsubcriber.mongo";
 import mongoose from 'mongoose';
 import { NextFunction, Request, Response } from 'express';
 
 
-
+CREATING SUBCRIBE EMAIL
 const createEmailSub = (req: Request, res: Response, next: NextFunction) => {
     const { email } = req.body;
 
@@ -27,12 +28,14 @@ const OneEmailSub = (req: Request, res: Response, next: NextFunction) => {
         .catch((error) => res.status(500).json({ error }));
 };
 
+// QURY ALL SUBCRIBER
 const SeeAllEmailLSub = (req: Request, res: Response, next: NextFunction) => {
     return emailsubcriber.find()
         .then((newMail) => res.status(200).json({ newMail }))
         .catch((error) => res.status(500).json({ error }));
 };
 
+// UPDATE ALL subcriber
 const updateEmailsub = (req: Request, res: Response, next: NextFunction) => {
     const emailSubcriber = req.params.emailId;
 

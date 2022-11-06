@@ -35,7 +35,7 @@ const Startapp = () => {
 
         next();
     });
-
+        // setting cokkies for live production
     app.use(
       session({
          secret: cookieSecret,
@@ -47,7 +47,7 @@ const Startapp = () => {
          }
       })
     )
-
+        // json converter, loggers, url and cokkies
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
     app.use(morgan("combined"));
