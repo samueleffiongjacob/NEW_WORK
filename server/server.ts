@@ -1,25 +1,21 @@
 //IMPORT SOURCE FILES
-import apps from "./src/app";
+import mongoose from 'mongoose';
+import servertapp from "./src/app";
 import dotenv from "dotenv";
 dotenv.config();
 
-// TO DO IMPORT DATABASE
-const { connectToDatabase } = require("./src/services/database.service");
+// TO DO IMPORT config and loggers
+import Logging from './src/utils/logging'
+import { config } from './src/config/config';
 
 
-const http = require("http");
+/** Connect to Mongo */
+mongoose
+    .connect(config.mongo.url, { retryWrites: true, w: 'majority' })
+    .then(() => {
+        Logging.info('Mongo connected successfully.');
+        servertapp();
+    })
+    .catch((error) => Logging.error(error));
 
-const PORT = process.env.PORT || 8000;
 
-const server = http.createServer(apps);
-
-// CRREATNG AN ASYNC FUNCTION THAT WAIT FOR DB IN COMMONJS
-async function startServer() {
-  await connectToDatabase()
-  
-
-  server.listen(PORT, () => {
-    console.log(`NASA SERVER IS RUNNING ON PORT ${PORT}....`);
-  });
-}
-startServer();

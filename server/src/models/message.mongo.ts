@@ -1,9 +1,16 @@
 // Importing desstructing mongoose from installed mongoose
 
-import { Schema, model } from "mongoose";
+import { Document, Schema, model } from "mongoose";
 
+export interface IContact {
+  name: string;
+  email:string;
+  message: string;
+}
+
+export interface IContactModel extends IContact, Document {}
 // ORDER SCHEMA CREATION FOR ALL ORDER MODELS
-const MessageSchema = new Schema(
+const ContactSchema = new Schema(
   {
     name: {
       type: String,
@@ -27,15 +34,19 @@ const MessageSchema = new Schema(
     
   },
 
-  // TIME STAMP WOULD BE RESPONSIBLE TO CREATE & UPDATE  DATE & TIME FOR USERS
+  {
+    // TIME STAMP WOULD BE RESPONSIBLE TO CREATE & UPDATE  DATE & TIME FOR USERS
 
-  // REGISTER IN THE DATABASE
+    // REGISTER IN THE DATABASE
+    versionKey: false,
+    timestamps: true
+  }
 
-  { timestamps: true }
+  
 );
 
 // ASSIGNING SCHEMA ORDER MODELS TO 1 CONSTANT
-const Message = model("Message",MessageSchema);
+const Contacts = model <IContactModel> ("Contact",ContactSchema);
 
 // EXPORTING THE THE MODELS
-export default Message;
+export default Contacts;

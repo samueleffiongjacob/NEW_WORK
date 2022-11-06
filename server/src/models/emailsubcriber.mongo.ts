@@ -1,8 +1,16 @@
 // Importing desstructing mongoose from installed mongoose
 
-import { Schema, model } from "mongoose";
+import { Document,  Schema, model } from "mongoose";
 
-// ORDER SCHEMA CREATION FOR ALL ORDER MODELS
+// VALIDATION OF EMAIL AND NAME  TO BE STRING FOR JOI
+
+export interface Iemailsubcriber {
+  email: string
+}
+
+export interface IemailsubcriberModel extends Iemailsubcriber,  Document{}
+
+// EMAILSUBCRIBER SCHEMA CREATION FOR ALL EMAILSUBCRIBER MODELS
 const emailsubcriberSchema = new Schema(
   {
    
@@ -11,19 +19,20 @@ const emailsubcriberSchema = new Schema(
       required: true,
       unique: true,
     },
-
-    
   },
+  {
+    // TIME STAMP WOULD BE RESPONSIBLE TO CREATE & UPDATE  DATE & TIME FOR USERS
 
-  // TIME STAMP WOULD BE RESPONSIBLE TO CREATE & UPDATE  DATE & TIME FOR USERS
+   // REGISTER IN THE DATABASE
+   versionKey: false,
+   timestamps: true 
+  }
 
-  // REGISTER IN THE DATABASE
-
-  { timestamps: true }
+  
 );
 
 // ASSIGNING SCHEMA ORDER MODELS TO 1 CONSTANT
-const emailsubcriber = model("emailsubcriber",emailsubcriberSchema);
+const emailsubcriber = model <IemailsubcriberModel> ("emailsubcriber",emailsubcriberSchema);
 
 // EXPORTING THE THE MODELS
 export  default  emailsubcriber;
