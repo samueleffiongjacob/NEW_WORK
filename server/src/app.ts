@@ -14,13 +14,12 @@ import express from "express";
 import  session  from 'express-session';
 import morgan from "morgan";
 import cors from 'cors';
-const {cookieSecret} = keys();
 
 const  cookieParser = require("cookie-parser"); 
 
 
 const app = express();
-
+const {cookieSecret} = keys();
 
 const Startapp = () => {
     /** Log the request */

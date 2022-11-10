@@ -1,4 +1,4 @@
-importing dependency
+// importing dependency
 import dotenv from 'dotenv';
 
 dotenv.config();

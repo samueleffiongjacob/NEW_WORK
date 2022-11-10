@@ -1,10 +1,10 @@
-IMPORTING DEPENDCY
+// IMPORTING DEPENDCY
 import emailsubcriber from "../../models/emailsubcriber.mongo";
 import mongoose from 'mongoose';
 import { NextFunction, Request, Response } from 'express';
 
 
-CREATING SUBCRIBE EMAIL
+// CREATING SUBCRIBE EMAIL
 const createEmailSub = (req: Request, res: Response, next: NextFunction) => {
     const { email } = req.body;
 

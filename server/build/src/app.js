@@ -9,8 +9,8 @@ dotenv_1.default.config();
 const config_1 = require("../src/config/config");
 const keys_1 = require("../src/config/keys");
 const logging_1 = __importDefault(require("../src/utils/logging"));
-// import {MessageRouter} from "../src/router/MESSAGE/message.routes"
-// import { SubcriberRouter } from "../src/router/SUBCRUIBER/subcriber.routes"
+const message_routes_1 = require("../src/router/MESSAGE/message.routes");
+const subcriber_routes_1 = require("../src/router/SUBCRUIBER/subcriber.routes");
 const express_1 = __importDefault(require("express"));
 const express_session_1 = __importDefault(require("express-session"));
 const morgan_1 = __importDefault(require("morgan"));
@@ -29,6 +29,7 @@ const Startapp = () => {
         });
         next();
     });
+    // setting cokkies for live production
     app.use((0, express_session_1.default)({
         secret: cookieSecret,
         resave: false,
@@ -38,6 +39,7 @@ const Startapp = () => {
             sameSite: "none",
         }
     }));
+    // json converter, loggers, url and cokkies
     app.use(express_1.default.urlencoded({ extended: true }));
     app.use(express_1.default.json());
     app.use((0, morgan_1.default)("combined"));
@@ -59,6 +61,8 @@ const Startapp = () => {
         next();
     });
     /** Routes */
+    app.use("/subcriber", subcriber_routes_1.SubcriberRouter);
+    app.use("/message", message_routes_1.MessageRouter);
     /** Healthcheck */
     app.get('/ping', (req, res, next) => res.status(200).json({ hello: 'world' }));
     /** Error handling */
